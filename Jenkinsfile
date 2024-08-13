@@ -12,16 +12,18 @@ pipeline {
                         sh 'npm install'
                     }
                 }
-        // run sonarqube test
-        stage('Run Sonarqube') {
-            environment {
-                scannerHome = tool 'seplan-scanner';
-            }
-            steps {
-              withSonarQubeEnv(credentialsId: 'sonar-front', installationName: 'sonar-qube') {
-                sh "${scannerHome}/bin/sonar-scanner  -Dsonar.login=sqp_74f4fb48446f15408442b975666f296592186a2a"
-              }
-            }
+
+               stage('Sonar') {
+                   steps {
+                       sh 'npm run sonar'
+                   }
+               }
+
+               stage('build') {
+                                  steps {
+                                      sh 'npm run build'
+                                  }
+                              }
         }
     }
 }
