@@ -4,25 +4,19 @@ pipeline {
     stages {
         stage('Install dependencies') {
             steps {
-                node {
-                    sh 'npm install'
-                }
+                sh 'npm install'
             }
         }
 
         stage('Sonar') {
             steps {
-                node {
-                    sh 'npm run sonar'
-                }
+                sh 'npm run sonar'
             }
         }
 
         stage('Build') {
             steps {
-                node {
-                    sh 'npm run build'
-                }
+                sh 'npm run build'
             }
         }
     }
