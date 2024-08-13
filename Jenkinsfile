@@ -7,6 +7,11 @@ pipeline {
             url: 'https://github.com/ottosdev/teste1.git'
             }
         }
+        stage('Install dependencies') {
+                    steps {
+                        sh 'npm install'
+                    }
+                }
         // run sonarqube test
         stage('Run Sonarqube') {
             environment {
@@ -14,7 +19,7 @@ pipeline {
             }
             steps {
               withSonarQubeEnv(credentialsId: 'sonar-front', installationName: 'sonar-qube') {
-                sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=front -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_74f4fb48446f15408442b975666f296592186a2a"
+                sh "${scannerHome}/bin/sonar-scanner  -Dsonar.login=sqp_74f4fb48446f15408442b975666f296592186a2a"
               }
             }
         }
