@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('SCM Checkout') {
             steps{
-           git branch: 'main', url: 'https://github.com/ottosdev/teste1.git'
+            url: 'https://github.com/ottosdev/teste1.git'
             }
         }
         // run sonarqube test
