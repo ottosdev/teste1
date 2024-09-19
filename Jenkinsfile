@@ -15,24 +15,24 @@ pipeline {
                 scannerHome = tool 'seplan-scanner'
             }
             steps {
-                script{
+    
                     withSonarQubeEnv(credentialsId: 'sonar-front', installationName: 'sonar') {
                     sh "${scannerHome}/bin/sonar-scanner"
-                    }
+           
                 }
             }
         }
 
         stage('Run Install') {  // Corrigido
             steps {
-                script{  sh "npm install" } // Corrigido o comando}
+                 sh "npm install"  // Corrigido o comando}
               
             }
         }
 
         stage('Run Build') {  // Corrigido
             steps {
-                script{sh "npm run build"}
+                sh "npm run build"
                 
             }
         }
