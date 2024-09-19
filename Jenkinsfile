@@ -16,7 +16,7 @@ pipeline {
             }
             steps {
     
-                    withSonarQubeEnv(credentialsId: 'sonar-front', installationName: 'sonar') {
+                    withSonarQubeEnv(credentialsId: 'sonar-front-2', installationName: 'sonar') {
                     sh "${scannerHome}/bin/sonar-scanner"
            
                 }
